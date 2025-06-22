@@ -15,14 +15,10 @@ class IssueService extends Github
     {
         $params = array_merge([
             'assignee' => $this->username,
-            'state' => 'open', // optional, to include closed issues
-            'per_page' => 100, // GitHub defaults to 30
+            'state' => 'open',
         ], $params);
 
         return $this->getClient()
-            ->withOptions([
-                'debug' => true,
-            ])
             ->get(
                 $this->getUrl($repository),
                 ['query' => $params]
