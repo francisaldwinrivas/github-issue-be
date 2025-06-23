@@ -25,4 +25,15 @@ class IssueService extends Github
             )
             ->json();
     }
+
+    public function update(string $repository, int $issueNumber, array $params): array
+    {
+        // https: //api.github.com/repos/OWNER/REPO/issues/ISSUE_NUMBER
+        return $this->getClient()
+            ->post(
+                "{$this->getUrl($repository)}/$issueNumber",
+                $params
+            )
+            ->json();
+    }
 }

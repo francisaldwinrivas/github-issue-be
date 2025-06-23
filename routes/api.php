@@ -18,7 +18,10 @@ Route::middleware('auth:api')->group(function () {
             Route::get('search', [RepositoryController::class, 'search'])->name('search');
 
             Route::prefix('{repository}/issue')->name('issue.')->group(function () {
+
                 Route::get('search', [IssueController::class, 'search'])->name('search');
+
+                Route::post('update/{issueNumber}', [IssueController::class, 'update'])->name('update');
             });
         });
     });
